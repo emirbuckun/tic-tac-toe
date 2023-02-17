@@ -51,6 +51,7 @@ class Game extends React.Component {
         squares: Array(9).fill(null),
         selectedSquare: -1,
       }],
+      selectedMove: -1,
       stepNumber: 0,
       xIsNext: true,
     };
@@ -76,6 +77,7 @@ class Game extends React.Component {
 
   jumpTo(step) {
     this.setState({
+      selectedMove: step,
       stepNumber: step,
       xIsNext: (step % 2) === 0,
     });
@@ -93,11 +95,20 @@ class Game extends React.Component {
         'Go to move #' + move + 
         " (" + col + ", " + row + ")" : 
         'Go to game start';
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
+      
+      if (this.state.selectedMove === move) {
+        return (
+          <li key={move}>
+            <button onClick={() => this.jumpTo(move)}><b>{desc}</b></button>
+          </li>
+        );
+      } else {
+        return (
+          <li key={move}>
+            <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          </li>
+        );
+      }
     });
 
     let status;
