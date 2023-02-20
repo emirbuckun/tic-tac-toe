@@ -45,6 +45,7 @@ class Game extends React.Component {
       selectedMove: -1,
       stepNumber: 0,
       xIsNext: true,
+      isToggled: false,
     };
   }
 
@@ -62,8 +63,14 @@ class Game extends React.Component {
         selectedSquare: i,
       }]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext,
+      xIsNext: !this.state.xIsNext
     });
+  }
+
+  handleToggle() {
+    this.setState({
+      isToggled: !this.state.isToggled
+    })
   }
 
   jumpTo(step) {
@@ -79,14 +86,13 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    const moves = history.map((step, move) => {
+    const moveList = history.map((step, move) => {
       const col = step.selectedSquare % 3;
       const row = Math.floor(step.selectedSquare / 3);
       const desc = move ?
         'Go to move #' + move +
         " (" + col + ", " + row + ")" :
         'Go to game start';
-
       if (this.state.selectedMove === move) {
         return (
           <li key={move}>
@@ -101,6 +107,9 @@ class Game extends React.Component {
         );
       }
     });
+
+    const moves = this.state.isToggled ?
+      moveList.reverse() : moveList;
 
     let status;
     if (winner) {
@@ -119,6 +128,16 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <div>
+            Sort moves descending &nbsp;
+            <label>
+              <input
+                type="checkbox"
+                onClick={() => this.handleToggle()}
+              />
+              <span />
+            </label>
+          </div>
           <ol>{moves}</ol>
         </div>
       </div>
