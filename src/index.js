@@ -131,7 +131,12 @@ class Game extends React.Component {
     if (winner) {
       status = 'Winner: ' + current.squares[winner[0]];
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      if (checkDraw(current.squares)) {
+        status = 'Game Draw';
+      }
+      else {
+        status = 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O');
+      }
     }
 
     return (
@@ -185,4 +190,13 @@ function calculateWinnerLines(squares) {
     }
   }
   return null;
+}
+
+function checkDraw(squares) {
+  for (let i = 0; i < 9; i++) {
+    if (!squares[i]) {
+      return false;
+    }
+  }
+  return true;
 }
