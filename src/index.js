@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
+// Function for creating squares
 function Square(props) {
+  // When there is a winner, square should be highlighted
   if (!props.highlight) {
     return (
       <button className="square" onClick={props.onClick}>
@@ -19,6 +21,7 @@ function Square(props) {
 }
 
 class Board extends React.Component {
+  // Renders square with necessary properties
   renderSquare(i) {
     let highlight;
     if (this.props.highlightLines &&
@@ -37,6 +40,7 @@ class Board extends React.Component {
     );
   }
 
+  // Renders the board with 9 squares (3x3)
   render() {
     let table = []
     for (let i = 0; i < 3; i++) {
@@ -50,6 +54,8 @@ class Board extends React.Component {
   }
 }
 
+// This component handles the move history, onClick event for board,
+// next step for the game and ordering the history
 class Game extends React.Component {
   constructor(props) {
     super(props);
@@ -65,6 +71,7 @@ class Game extends React.Component {
     };
   }
 
+  // Click event for clicks on board
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -83,12 +90,14 @@ class Game extends React.Component {
     });
   }
 
+  // Handles toggle button for ordering move history
   handleToggle() {
     this.setState({
       isToggled: !this.state.isToggled
     })
   }
 
+  // Click event for clicks on move history
   jumpTo(step) {
     this.setState({
       selectedMove: step,
@@ -97,6 +106,7 @@ class Game extends React.Component {
     });
   }
 
+  // Renders all the game objects
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -172,6 +182,7 @@ class Game extends React.Component {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<Game />);
 
+// Finds the winner if exists, returns the indexes
 function calculateWinnerLines(squares) {
   const lines = [
     [0, 1, 2],
@@ -192,6 +203,7 @@ function calculateWinnerLines(squares) {
   return null;
 }
 
+// Checks the draw status
 function checkDraw(squares) {
   for (let i = 0; i < 9; i++) {
     if (!squares[i]) {
