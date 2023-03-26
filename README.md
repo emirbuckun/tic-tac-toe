@@ -6,7 +6,7 @@ This project is a tic-tac-toe game. It's created using React which demonstrates 
 5. Using function component
 
 ## Live Application URL
-The application is deployed in https://emirbuckun.github.io/Tic-Tac-Toe-Game/.
+The application is deployed in https://emirbuckun.github.io/tic-tac-toe/.
 Click on the link to see the application.
 
 ## Prerequisites
