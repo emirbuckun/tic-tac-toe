@@ -1,8 +1,8 @@
 {
-  "name": "my-app",
+  "name": "tic-tac-toe",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://emirbuckun.github.io/Tic-Tac-Toe-Game/",
+  "homepage": "https://emirbuckun.github.io/tic-tac-toe/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
