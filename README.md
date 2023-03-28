@@ -1,4 +1,4 @@
-# Tic-Tac-Toe Game
+# Tic Tac Toe Game
 
 ![image](https://user-images.githubusercontent.com/63044078/228166553-bf49c5bb-b246-44a3-9752-11cd7cc5051f.png)
 
