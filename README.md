@@ -1,6 +1,6 @@
 # Tic-Tac-Toe Game
 
-![image](https://user-images.githubusercontent.com/63044078/228166335-5679410e-84ec-468d-9d7e-16fd319e876f.png)
+![image](https://user-images.githubusercontent.com/63044078/228166553-bf49c5bb-b246-44a3-9752-11cd7cc5051f.png)
 
 This project is a tic-tac-toe game. It's created using React which demonstrates the following:
 1. Creating component
